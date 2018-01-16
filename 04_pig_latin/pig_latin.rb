@@ -6,20 +6,8 @@ def translate(word)
     word+"ay"
   else
     word = word.split('')
-    first_char = word[0]
-    second_char = word[1]
-    #si la 2eme est une voyelle
-    if  vowel.include?(second_char)
-      #push insert l'element à la fin; shift enlève le premier element et le retourne
-      word.shift
-      word.push(first_char+"ay")*''
-    #si la 2eme est une consonne
-    else
-      word = word.drop(2)
-      word.push(first_char+second_char+"ay")*''
-    end
+    translate_consonant(word)
   end
-
 end
 
 def translate_consonant(word)
@@ -30,7 +18,14 @@ def translate_consonant(word)
   while not vowel.include?(word[i])
     i+=1
   end
+  #to_move est une liste de i consonnes successives
   to_move = word.take(i)
+  #on enlève les i premiers élements et on garde le reste
   word = word.drop(i)
-  word.push(to_move+"ay")*''
+  #on ajoute 'ay' à la suite des consonnes (to_move) avec push,
+  #on regroupe les deux array (word et to_move)
+  # on fait un *'' qui est equivalent à join('')
+  (word.push+to_move.push("ay"))*''
 end
+
+puts translate_consonant ['b','b','b','i','a','n','a','n','a']
