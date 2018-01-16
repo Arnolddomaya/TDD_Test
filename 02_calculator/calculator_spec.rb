@@ -80,17 +80,17 @@ end
 describe "#multiply" do
 
   it "multiplies two numbers" do
-    expect(multiply(3,2)).to eq(6)
+    expect(multiply([3,2])).to eq(6)
   end
 
   it "multiplies several numbers" do
-    expect(multiply(3,2,4)).to eq(24)
+    expect(multiply([3,2,4])).to eq(24)
   end
 end
 
 describe "#power" do
   it "raises one number to the power of another number" do
-    expect(power(3,4)).to eq(91)
+    expect(power(3,4)).to eq(81)
   end
 end
 
